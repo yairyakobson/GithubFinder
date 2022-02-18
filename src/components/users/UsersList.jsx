@@ -13,7 +13,7 @@ function UsersList(){
       lg:grid-cols-3
       md:grid-cols-2">{users.map((user) =>(
         <UsersItem key={user.id} user={user}/>
-      ))};
+      ))}
       </div>
     );
   }

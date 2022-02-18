@@ -20,7 +20,7 @@ function Alert(){
                   strokeWidth='2'/>
               </svg>
             )}
-            <p className="flex-1 text-base font-semibold lending-7 text-inherit">
+            <p className="flex-1 text-base font-semibold lending-7 text-black">
                 <strong>{alert.msg}</strong>
             </p>
         </p>

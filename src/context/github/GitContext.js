@@ -9,6 +9,7 @@ const GIT_TOKEN = process.env.REACT_APP_GIT_TOKEN
 export const GitProvider = ({children}) =>{
   const initialState = {
     users: [],
+    user: {},
     loading: false
   }
   const [state, dispatch] = useReducer(GitReducer, initialState);
@@ -33,6 +34,30 @@ export const GitProvider = ({children}) =>{
       payload: items,
     });
   }
+
+  // Getting a single user from the API
+  const getUser = async (login) =>{
+    setLoading();
+
+    const response = await fetch(`${GIT_URL}/user?${login}`, {
+      headers: {
+        Authorization: `token ${GIT_TOKEN}`,
+      },
+    });
+
+    if(response.status === 404){
+      window.location = "/not found"
+    }
+    else{
+      const data = await response.json();
+
+      dispatch({
+      type: "GET_USER",
+      payload: data,
+    });
+    }
+  }
+
   const clearUsers = () => dispatch({type: "CLEAR_USERS"});
   const setLoading = () => dispatch({type: "SET_LOADING"});
 
@@ -40,8 +65,10 @@ export const GitProvider = ({children}) =>{
       <GitContext.Provider value={{
         users: state.users,
         loading: state.loading,
+        user: state.user,
         searchUsers,
         clearUsers,
+        getUser,
       }}>
         {children}
       </GitContext.Provider>

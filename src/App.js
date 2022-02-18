@@ -5,6 +5,7 @@ import Alert from "./components/layout/Alert";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
+import User from "./pages/User";
 import { GitProvider } from "./context/github/GitContext";
 import { AlertProvider } from "./context/alert/AlertContext";
 
@@ -17,12 +18,13 @@ function App(){
           <Navbar/>
             <main className="container mx-auto px-3 pb-12">
               <Alert/>
-              <Routes>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/About" element={<About/>}/>
-                <Route path="/Error" element={<Error/>}/>
-                <Route path="/*" element={<Error/>}/>
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<Home/>}/>
+                  <Route path="/About" element={<About/>}/>
+                  <Route path="/user/:login" element={<User/>}/>
+                  <Route path="/Error" element={<Error/>}/>
+                  <Route element={<Error/>}/>
+                </Routes>
             </main>
           <Footer/>
         </div>
