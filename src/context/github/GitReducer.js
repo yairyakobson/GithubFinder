@@ -18,6 +18,6 @@ const gitReducer = (state, action) =>{
           users: [],
         }
         default: return state
-    }
-}
+    };
+};
 export default gitReducer;
