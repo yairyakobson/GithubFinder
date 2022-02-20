@@ -162,9 +162,8 @@ function User(){
             </div>
           </div>
         </div>
-
-        <UserRepos repos={repos} />
       </div>
+      <UserRepos repos={repos}/>
     </div>
   </>
   );
