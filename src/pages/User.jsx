@@ -6,15 +6,20 @@ import { useParams } from "react-router-dom";
 import Spinner from '../components/layout/Spinner'
 import GitContext from "../context/github/GitContext";
 import UserRepos from '../components/repos/UserRepos';
+import {getUserInfo} from "../context/github/GitActions";
 
 function User(){
-  const { getUser, user, loading, getRepos, repos } = useContext(GitContext);
+  const { user, loading, repos, dispatch } = useContext(GitContext);
   const params = useParams();
 
   useEffect(() =>{
-     getUser(params.login);
-     getRepos(params.login);
-  }, []);
+    dispatch({type: "SET_LOADING"})
+    const getUserData = async() =>{
+      const userData = await getUserInfo(params.login);
+      dispatch({type: "GET_USER_AND_REPOS", payload: userData});
+    }
+    getUserData();
+  }, [dispatch, params.login]);
 
   const {
     name,
@@ -73,9 +78,7 @@ function User(){
                   href={html_url}
                   target='_blank'
                   rel='noreferrer'
-                  className='btn btn-outline'
-                >
-                  Visit Github Profile
+                  className='btn btn-outline'>Visit Github Profile
                 </a>
               </div>
             </div>
@@ -95,9 +98,7 @@ function User(){
                     <a
                       href={`https://${blog}`}
                       target='_blank'
-                      rel='noreferrer'
-                    >
-                      {blog}
+                      rel='noreferrer'>{blog}
                     </a>
                   </div>
                 </div>
@@ -109,9 +110,7 @@ function User(){
                     <a
                       href={`https://twitter.com/${twitter_username}`}
                       target='_blank'
-                      rel='noreferrer'
-                    >
-                      {twitter_username}
+                      rel='noreferrer'>{twitter_username}
                     </a>
                   </div>
                 </div>
