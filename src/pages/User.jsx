@@ -12,7 +12,7 @@ function User(){
   }, []);
 
   return(
-    <div>{user.login}</div>
+    <div>{params.login}</div>
   );
 };
 export default User;
