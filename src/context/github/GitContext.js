@@ -63,7 +63,7 @@ export const GitProvider = ({children}) =>{
   const getRepos = async (login) =>{
     setLoading();
 
-    const response = await fetch(`${GIT_URL}/users?${login}/repos`, {
+    const response = await fetch(`${GIT_URL}/users${login}/repos`, {
       headers: {
         Authorization: `token ${GIT_TOKEN}`,
       },
