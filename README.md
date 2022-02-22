@@ -1,6 +1,6 @@
 Github Finder - Find your Github profiles easier.
 
-Built in React using tailwindCSS, daisyUI and axios for API integration
+Built in React using tailwindCSS and daisyUI for CSS frameworks and axios library for API integration
 
 With Github Finder you can find other Github profiles a lot faster than just searching them one by one
 
