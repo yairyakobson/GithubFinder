@@ -51,7 +51,10 @@ function User(){
           </Link>
         </div>
 
-        <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
+        <div className='grid grid-cols-1
+        xl:grid-cols-3
+        lg:grid-cols-3
+        md:grid-cols-3 mb-8 md:gap-8'>
             <div className='rounded-lg shadow-xl card image-full'>
               <figure>
                 <img src={avatar_url} alt='' />
