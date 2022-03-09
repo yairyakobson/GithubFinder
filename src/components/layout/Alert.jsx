@@ -6,10 +6,10 @@ function Alert(){
 
   return(
     alert !== null && (
-        <p className="flex items-start mb-4 space-x-2">
+        <p className="flex items-start mb-4 space-x-2 ml-80">
             {alert.type === "error" && (
             <svg
-                className='w-6 h-6 flex-none mt-0.5'
+                className='w-7 h-7 flex-none mt-0.5'
                 fill='none'
                 viewBox='0 0 24 24'>
 
@@ -20,7 +20,7 @@ function Alert(){
                   strokeWidth='2'/>
               </svg>
             )}
-            <p className="flex-1 text-base font-semibold lending-7 text-black">
+            <p className="flex-1 text-lg font-semibold lending-7 text-black mr-20">
                 <strong>{alert.msg}</strong>
             </p>
         </p>

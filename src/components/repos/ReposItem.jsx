@@ -13,25 +13,43 @@ function ReposItem({repo}){
   } = repo
 
   return(
-      <div className="mb-2 rounded-md card bg-gray-800 text-white hover:bg-white hover:text-black">
+      <div className="mb-2 rounded-md card bg-gray-800 text-white hover:bg-white hover:text-black outline hover:outline-black">
           <div className="card-body">
-              <h3 className="mb-2 text-xl font-semibold">
+              <h3 className="mb-2 font-bold pb-2
+              xl:text-2xl
+              lg:text-2xl
+              sm:text-xl">
                   <a href={html_url}>
                       <FaLink className="inline mr-1"/>{name}
                   </a>
               </h3>
-              <p className="mb-3">{description}</p>
+              <p className="mb-5
+              xl:text-xl
+              lg:text-2xl
+              sm:text-base">{description}</p>
               <div>
-                  <div className="mr-2 badge badge-info badge-lg">
+                  <div className="badge badge-info badge-lg mr-3
+                  xl:p-3
+                  lg:text-xl p-2
+                  sm:text-base p-3">
                       <FaEye className="mr-2"/>{watchers_count}
                   </div>
-                  <div className="mr-2 badge badge-success badge-lg">
+                  <div className="badge badge-success badge-lg mr-3
+                  xl:p-3
+                  lg:text-xl p-2
+                  sm:text-base p-3">
                       <FaStar className="mr-2"/>{stargazers_count}
                   </div>
-                  <div className="mr-2 badge badge-error badge-lg">
+                  <div className="badge badge-error badge-lg mr-3
+                  xl:p-3
+                  lg:text-xl p-2
+                  sm:text-base p-3">
                       <FaInfo className="mr-2"/>{open_issues}
                   </div>
-                  <div className="mr-2 badge badge-warning badge-lg">
+                  <div className="badge badge-warning badge-lg mr-3
+                  xl:p-3
+                  lg:text-xl p-2
+                  sm:text-base p-3">
                       <FaUtensils className="mr-2"/>{forks}
                   </div>
               </div>

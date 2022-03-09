@@ -7,7 +7,7 @@ function UserRepos({repos}){
       <div className="card-body">
         <h2 className="text-3xl my-4 font-bold card-title">Latest Repositories</h2>
         {repos.map((repo) => (
-          <ReposItem key={repo.id} repo={repo}/>
+          <ReposItem key={repo.id} repo={repo} className="outline-black"/>
         ))}
       </div>
     </div>
