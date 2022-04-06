@@ -49,7 +49,7 @@ function User(){
           <Link to='/' className='btn btn-ghost
           xl:text-base
           lg:text-lg
-          md:text-xl'>f
+          md:text-xl'>
             Back To Search
           </Link>
         </div>
