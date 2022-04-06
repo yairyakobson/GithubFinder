@@ -32,5 +32,5 @@ function App(){
     </AlertProvider>
   </GitProvider>
   );
-}d
+}
 export default App;
