@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function UsersItem({user: {login, avatar_url}}){
   return(
-    <div className="card shadow-md compact side bg-base-50">
+    <div className="card shadow-md compact side bg-base-50 text-2xl">
         <div className="flex-row items-center space-x-4 card-body">
             <div>
                 <div className="avatar">

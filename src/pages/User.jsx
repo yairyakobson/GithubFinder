@@ -59,10 +59,10 @@ function User(){
         md:grid-cols-3 mb-8 md:gap-8'>
             <div className='rounded-lg shadow-xl card image-full'>
               <figure>
-                <img src={avatar_url} alt='' />
+                <img src={avatar_url} alt=''/>
               </figure>
               <div className='card-body justify-end'>
-                <h2 className='card-title mb-0
+                <h2 className='card-title mb-0 text-xl
                 md:text-2xl'>{name}</h2>
                 <p className='text-lg
                 md:text-xl'>{login}</p>
