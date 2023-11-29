@@ -1,5 +1,5 @@
-import UsersList from "../components/users/UsersList"
-import UsersSearch from "../components/users/UsersSearch"
+import UsersList from "../components/users/UsersList";
+import UsersSearch from "../components/users/UsersSearch";
 
 function Home(){
   return(
@@ -9,4 +9,5 @@ function Home(){
     </div>
   )
 }
+
 export default Home;

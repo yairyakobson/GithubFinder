@@ -1,9 +1,10 @@
 import { createContext, useReducer } from "react";
-import GitReducer from './GitReducer';
+
+import GitReducer from "./GitReducer";
 
 const GitContext = createContext();
 
-export const GitProvider = ({children}) =>{
+export const GitProvider = ({ children }) =>{
   const initialState = {
     users: [],
     user: {},
@@ -12,7 +13,7 @@ export const GitProvider = ({children}) =>{
   }
   const [state, dispatch] = useReducer(GitReducer, initialState);
 
-  const clearUsers = () => dispatch({type: "CLEAR_USERS"});
+  const clearUsers = () => dispatch({ type: "CLEAR_USERS" });
 
     return(
       <GitContext.Provider value={{
@@ -24,4 +25,5 @@ export const GitProvider = ({children}) =>{
       </GitContext.Provider>
     );
 };
+
 export default GitContext;
