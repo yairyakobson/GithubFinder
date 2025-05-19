@@ -3,10 +3,10 @@ import UsersSearch from "../components/users/UsersSearch";
 
 function Home(){
   return(
-    <div>
+    <section>
       <UsersSearch/>
       <UsersList/>
-    </div>
+    </section>
   )
 }
 

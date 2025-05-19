@@ -4,7 +4,6 @@ import { searchUsers } from "../../context/github/GitActions";
 import AlertContext from "../../context/alert/AlertContext";
 import GitContext from "../../context/github/GitContext";
 
-
 function UsersSearch(){
   const [text, setText] = useState("");
 
@@ -28,13 +27,13 @@ function UsersSearch(){
   }
 
   return(
-    <div className="grid grid-cols-1
+    <section className="grid grid-cols-1
     md:grid-cols-2
     xl:grid-cols-1">
-      <div>
+      <section>
         <form onSubmit={handleSubmit}>
-          <div className="form-control">
-            <div className="relative">
+          <section className="form-control">
+            <section className="relative">
               <input type="text"
               className="outline-transparent w-full pr-40 bg-gray-200 input-lg text-black"
               placeholder="Search"
@@ -43,17 +42,17 @@ function UsersSearch(){
 
               <button type="submit"
               className="absolute top-0 right-0 rounded-l-none w-360 btn btn-lg">Go</button>
-            </div>
-          </div>
+            </section>
+          </section>
         </form>
-      </div>
+      </section>
       {users.length > 0 && (
-      <div>
+      <section>
         <button onClick={() => dispatch({ type: "CLEAR_USERS" })}
         className="btn btn-ghost btn-lg">Clear</button>
-      </div>
+      </section>
       )}
-    </div>
+    </section>
   );
 };
 export default UsersSearch;

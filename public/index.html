@@ -3,11 +3,29 @@
   <head>
     <meta charset="utf-8"/>
     <link rel="icon" href="%PUBLIC_URL%/icon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
+    rel="stylesheet"
+    type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            sm: { max: "640px" },
+            md: { min: "641px", max: "768px" },
+            lg: { min: "769px", max: "1024px" },
+            xl: { min: "1025px", max: "1280px" },
+            "2xl": { min: "1281px", max: "1536px" },
+            "3xl": { min: "1537px", max: "1920px" }
+          },
+        }
+      }
+    </script>
     <meta name="theme-color" content="#000000"/>
-    <link href="/dist/output.css" rel="stylesheet">
     <title>Github Finder</title>
   </head>
   <body>
-    <div id="root"></div>
+    <section id="root"></section>
   </body>
 </html>

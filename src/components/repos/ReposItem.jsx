@@ -13,8 +13,8 @@ function ReposItem({ repo }){
   } = repo
 
   return(
-    <div className="mb-2 rounded-md card bg-gray-800 text-white hover:bg-white hover:text-black outline hover:outline-black">
-      <div className="card-body">
+    <section className="mb-2 rounded-md card bg-gray-800 text-white hover:bg-white hover:text-black outline hover:outline-black">
+      <section className="card-body">
         <h3 className="mb-2 font-bold pb-2
         sm:text-xl
         lg:text-2xl
@@ -29,37 +29,37 @@ function ReposItem({ repo }){
         lg:text-2xl
         xl:text-xl">{description}</p>
 
-        <div>
-          <div className="badge badge-info badge-lg mr-3
+        <section>
+          <section className="badge badge-info badge-lg mr-3
           sm:text-base p-3
           lg:text-xl p-2
           xl:p-3">
             <FaEye className="mr-2"/>{watchers_count}
-          </div>
+          </section>
 
-          <div className="badge badge-success badge-lg mr-3
+          <section className="badge badge-success badge-lg mr-3
           sm:text-base p-3
           lg:text-xl p-2
           xl:p-3">
             <FaStar className="mr-2"/>{stargazers_count}
-          </div>
+          </section>
 
-          <div className="badge badge-error badge-lg mr-3
+          <section className="badge badge-error badge-lg mr-3
           sm:text-base p-3
           lg:text-xl p-2
           xl:p-3">
             <FaInfo className="mr-2"/>{open_issues}
-          </div>
+          </section>
 
-          <div className="badge badge-warning badge-lg mr-3
+          <section className="badge badge-warning badge-lg mr-3
           sm:text-base p-3
           lg:text-xl p-2
           xl:p-3">
             <FaUtensils className="mr-2"/>{forks}
-          </div>
-        </div>
-      </div>
-    </div>
+          </section>
+        </section>
+      </section>
+    </section>
   )
 }
 
