@@ -9,7 +9,6 @@
 
     /* Modules */
     "module": "CommonJS",
-    "outDir": "./dist",
     "forceConsistentCasingInFileNames": true,
 
     /* Type Checking */
