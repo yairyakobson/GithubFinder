@@ -1,2 +1,20 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@media(max-width: 767px){
+  .repo-data{
+    font-size: 1.2rem;
+  }
+  .user-data{
+    font-size: 1.2rem;
+  }
+  .button-text{
+    font-size: 1.2rem;
+  }
+  .pro-data{
+    font-size: 1.2rem;
+  }
+  .footer-text{
+    font-size: 1.1rem;
+  }
+}
