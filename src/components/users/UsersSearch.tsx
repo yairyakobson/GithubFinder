@@ -1,59 +1,75 @@
-import React, { useState, use } from "react";
+import React, { useRef, useState } from "react";
 import { toast } from "sonner";
 
-import type { GitContextTypeProps } from "../../interfaces/gitContext/gitContextInterface";
-import { searchUsers } from "../../context/github/GitActions";
+import type { GithubUserProps } from "../../interfaces/user/githubUserInterface";
+import { useLazySearchUsersQuery } from "../../redux/api/services/githubApi";
 
-import GitContext from "../../context/github/GitContext";
+import UsersList from "./UsersList";
 
 function UsersSearch(){
-  const [text, setText] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [users, setUsers] = useState<GithubUserProps[]>([]);
 
-  const { users, dispatch } = use(GitContext) as GitContextTypeProps;
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value);
+  const [triggerSearch, { isFetching }] = useLazySearchUsersQuery();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
+
+    const text = inputRef.current?.value.trim() ?? "";
+
     if(text === ""){
       toast.error("Enter Something");
+      return;
     }
-    else{
-      dispatch({ type: "SET_LOADING" })
-      const users = await searchUsers(text);
-      dispatch({ type: "GET_USERS", payload: users });
-      
-      setText("");
+
+    try{
+      const result = await triggerSearch(text).unwrap();
+      setUsers(result);
+
+      if(inputRef.current){ // Clear input after submit
+        inputRef.current.value = "";
+      }
+    }
+    catch(error){
+      toast.error("Failed to fetch users");
     }
   }
 
-  return(
-    <section className="grid grid-cols-1
-    md:grid-cols-2
-    xl:grid-cols-1">
-      <section>
-        <form onSubmit={handleSubmit}>
-          <section className="form-control">
-            <section className="relative">
-              <input type="text"
-              className="outline-transparent w-full pr-40 bg-gray-200 input-lg text-black"
-              placeholder="Search"
-              value={text}
-              onChange={handleChange}/>
+  const handleClear = () =>{
+    setUsers([]);
+  };
 
+  return(
+    <section className="grid grid-cols-1">
+      <form onSubmit={handleSubmit}>
+        <section className="form-control">
+          <section className="flex">
+            <input type="text"
+            className="w-full outline-transparent p-[0.7rem]
+            bg-gray-200 input-lg text-black mb-5"
+            placeholder="Search"
+            ref={inputRef}/>
+
+            {users?.length > 0 ? (
+              <button type="button"
+              key="clear"
+              onClick={handleClear}
+              className="btn btn-lg rounded-l-none">Clear
+              </button>
+            ) : (
               <button type="submit"
-              className="absolute top-0 right-0 rounded-l-none w-360 btn btn-lg">Go</button>
-            </section>
+              key="go"
+              className="btn btn-lg rounded-l-none"
+              disabled={isFetching}
+              >{isFetching ? "Loading..." : "Go"}
+              </button>
+            )}
           </section>
-        </form>
-      </section>
-      {users.length > 0 && (
-      <section>
-        <button onClick={() => dispatch({ type: "CLEAR_USERS" })}
-        className="btn btn-ghost btn-lg">Clear</button>
-      </section>
-      )}
+          <UsersList users={users} isLoading={isFetching}/>
+        </section>
+      </form>
     </section>
   );
-}
+};
+
 export default UsersSearch;

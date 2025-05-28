@@ -1,29 +1,33 @@
 import { Link } from "react-router";
 
-import type { UserProps } from "../../interfaces/user/gitUserInterface";
+import type { GithubSingleUserProps } from "../../interfaces/user/githubSingleUserInterface";
 
-const UsersItem: React.FC<UserProps> = ({
-  login,
-  avatar_url
-}) =>{
-  return(
-    <section className="card shadow-md compact side bg-base-50 text-2xl">
-      <section className="flex-row items-center space-x-4 card-body">
+function UsersItem({ user: { login, avatar_url } }: GithubSingleUserProps){
+  return (
+    <section className="card shadow-md bg-slate-100 text-2xl">
+      <section className="card-body flex-row items-center space-x-3">
         <section>
-          <section className="avatar">
-            <section className="rounded-full shadow w-14 h-14">
-              <img src={avatar_url} alt="Profile"/>
+          <section>
+            <section className="rounded-full w-14 h-14">
+              <img src={avatar_url} alt="Profile"
+              className="rounded-full"/>
             </section>
           </section>
         </section>
 
         <section>
-          <h2 className="card-title">{login}</h2>
-          <Link className="text-base-content text-opacity-40" to={`/user/${login}`}>Visit Profile</Link>
+          <Link to={`/user/${login}`}
+          className="card-title mb-5
+          md:mb-8">{login}</Link>
         </section>
       </section>
+
+      <Link to={`/user/${login}`}
+      target="_blank"
+      className="btn btn-md absolute bottom-1 right-1 text-base
+      md:btn-sm md:text-xs">Visit Profile</Link>
     </section>
-  )
+  );
 }
 
 export default UsersItem;

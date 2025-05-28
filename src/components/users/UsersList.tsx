@@ -1,25 +1,26 @@
-import { use } from "react";
-import type { GitContextTypeProps } from "../../interfaces/gitContext/gitContextInterface";
+import type { GithubUsersListProps } from "../../interfaces/user/githubUserListInterface";
 
 import UsersItem from "./UsersItem";
 import Spinner from "../layout/Spinner";
-import GitContext from "../../context/github/GitContext";
 
-function UsersList(){
-  const { users, loading } = use(GitContext) as GitContextTypeProps
-  
-  if(!loading){
+function UsersList({ users, isLoading }: GithubUsersListProps){
+
+  if(!isLoading){
     return(
-      <section className="grid grid-cols-3 gap-8
-      sm:grid-cols-1
-      xl:grid-cols-4">
-      {users.map((user) =>(
-        <UsersItem key={user.id} {...user}/>
+      <section className="grid grid-cols-1 gap-8
+      md:grid-cols-2
+      lg:grid-cols-3
+      xl:grid-cols-4
+      2xl:grid-cols-5">
+      {users?.map((user) =>(
+        <UsersItem key={user.id} user={user}/>
       ))}
       </section>
     );
   }
-  return <Spinner/>
-}
+  else{
+    return <Spinner/>
+  };
+};
 
 export default UsersList;
