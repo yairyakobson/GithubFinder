@@ -1,17 +1,14 @@
-import React from "react";
+import type { UserRepoListProps } from "../../interfaces/repos/gitRepoListInterface";
 
-import type { RepoProps } from "../../interfaces/user/gitRepoInterface";
+import ReposList from "./ReposList";
 
-import ReposItem from "./ReposItem";
-
-const UserRepos: React.FC<RepoProps> = ({ repos }) =>{
+function UserRepos({ repos }: UserRepoListProps){
   return(
-    <section className="rounded-lg shadow-lg card bg-base-100">
+    <section className="card rounded-xl shadow-lg bg-slate-100">
       <section className="card-body">
-        <h2 className="text-3xl my-4 font-bold card-title">Latest Repositories</h2>
-        {repos.map((repo: any) => (
-          <ReposItem key={repo.id} repo={repo}
-          className="outline-black"/>
+        <h2 className="card-title text-3xl my-3 font-bold">Latest Repositories</h2>
+        {repos.map((repo) => (
+          <ReposList key={repo.id} repo={repo}/>
         ))}
       </section>
     </section>
